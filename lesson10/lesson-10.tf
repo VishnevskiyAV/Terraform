@@ -1,0 +1,57 @@
+# ___________________________________________________
+# My Terraform
+#
+# Build WevServer during Bootstrap
+#
+# Made by AV
+# ___________________________________________________
+
+provider "aws" {
+  region = "eu-central-1"
+}
+
+resource "aws_instance" "my_webserver" {
+  ami                    = "ami-05ff5eaef6149df49" # Amazon Linux AMI
+  instance_type          = "t2.micro"
+  key_name               = "Frankfurt-vish"
+  vpc_security_group_ids = [aws_security_group.web_access.id] # Привязали Security Group к нашему instance
+  user_data              = templatefile("user_data.tftpl", {
+    f_name = "Aleksandr",
+    l_name = "Vishnevskiy",
+    names  = ["Alex", "Vanya", "Maria", "Vasya"]
+  })
+  tags = {
+    Name  = "Terraform"
+    Owner = "AV"
+  }
+}
+
+resource "aws_security_group" "web_access" {
+  name        = "WebServer Security Group"
+  description = "My First Security Group"
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1" # Any traffic in all protocols
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    Name  = "Terraform"
+    Owner = "AV"
+  }
+}

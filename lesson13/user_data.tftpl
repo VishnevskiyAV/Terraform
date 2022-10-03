@@ -1,0 +1,21 @@
+#!/bin/bash
+yum -y update
+yum -y install httpd
+
+ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+
+cat <<EOF >/var/www/html/index.html
+<html>
+<h2>Build by Power of Terraform <font color="red">v1.13</font></h2></br>
+Owner ${f_name} ${l_name} </br>
+</br>
+%{ for name in names ~}
+Hello ${name} from ${f_name}</br>
+%{ endfor ~}
+</br>
+Server IP is: $ip
+</html>
+EOF
+
+sudo service httpd start
+chkconfig httpd on
