@@ -1,7 +1,6 @@
 <img src="terraform.jpg"><br>
 
-# Terraform Lessons Practice
-
+# Terraform Lessons Practice (based on lessons from ADV-IT youtube channel by Denis Astahov)
 
 ### Set AWS Credentials in Windows PowerShell:
 ```
