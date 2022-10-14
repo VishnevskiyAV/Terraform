@@ -38,6 +38,7 @@ resource "aws_instance" "webserver" {
   vpc_security_group_ids = [aws_security_group.webserver.id]
   subnet_id              = data.terraform_remote_state.network.outputs.public_subnet_id[0]
   user_data              = file("user_data.sh")
+  key_name               = "Frankfurt-vish"
   tags = {
     Name = "Web-server"
   }
