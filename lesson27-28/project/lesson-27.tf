@@ -16,7 +16,7 @@ module "vpc-default" {
 }
 
 module "vpc-dev" {
-  source              = "../modules/aws_net"
+  source              = "github.com/VishnevskiyAV/Terraform/lesson27-28/modules/aws_net"
   env                 = "development"
   vpc_cidr            = "10.100.0.0/16"
   public_subnet_cidrs = ["10.100.1.0/24", "10.100.2.0/24"]
