@@ -1,0 +1,13 @@
+// Fake Credentials file, but should look like this
+{
+  "type": "service_account",
+  "project_id": "gcp-project-1111",
+  "private_key_id": "11111111111111111111111",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n11111111111111111111111+w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tf-22-677@my-gcp-project-1111.iam.gserviceaccount.com",
+  "client_id": "11111111111111111111111",
+  "auth_uri": "https://accounts..com/o/oauth2/auth",
+  "token_uri": "https://oauth2..com/token",
+  "auth_provider_x509_cert_url": "https://www..com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www..com/robot/v1/metadata/x509/tf-22-677%40my-gcp-project-1111.iam.gserviceaccount.com"
+}
